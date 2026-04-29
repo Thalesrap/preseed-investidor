@@ -1,0 +1,131 @@
+PROMPT MESTRE: PORTAL ESTRATÉGICO ORÁCULO DE SOPHIA (VERSÃO UNICÓRNIO)
+
+"Aja como um Arquiteto de Sistemas de Missão Crítica e Engenheiro Full-stack Sênior especializado em Venture Capital. Sua missão é codificar do zero o Portal de Pitch Interativo do Oráculo de SophIA. Este não é apenas um site, é uma plataforma de venda societária para um aporte Pre-Seed de R$ 500k, projetando o primeiro unicórnio de soberania de dados do Brasil.  
+
+ESTÉTICA 'LUCIDEZ' (DNA SOPHIA):
+
+    Estilo: Glassmorphism Profundo. Fundo Azul Noturno (#000022), cards com transparência blur, bordas em Roxo Imperial (#660066).
+
+    Tipografia: Destaque a sigla 'IA' em Amarelo Neon (#FFFF00) em todos os títulos.
+
+    Marca: Use o arquivo logo-sophia.png como ícone central e pulsante.  
+
+    UX: Mobile-First absoluto, scroll storytelling com animações suaves de entrada.
+
+SEÇÕES ESTRUTURAIS:
+
+    HERO SECTION:
+
+        Título: 'Oráculo de SophIA: O Freio ABS da Civilização Digital'.
+
+        Subtítulo: 'Mitigação de passivos bilionários e soberania de dados para o Brasil e o Mundo'.  
+
+    O GABINETE DO CENTAURO (FOUNDER):
+
+        Perfil de Thales Pires: 'O Centauro: 25 anos no Direito Estratégico fusionados à graduação em IA'.
+
+        Exiba ícones de autoridade para Cibersegurança Cisco e Forense Digital (Hackers do Bem). Este é o nosso selo de resiliência técnica.  
+
+    O MOTOR DE ESCALA PANORÂMICO (SIMULADOR DE ROI E SOBERANIA):
+    Implemente 4 Sliders interativos com cálculos em tempo real baseados no modelo de negócios real:  
+
+        Slider A: Número de Guardiões (B2C). Cálculo: Total de Guardiões x R$ 19,90 (Receita Recorrente SaaS).
+
+        Slider B: Validações B2C. Cálculo: Consultas x R$ 99,00 (Exibir Split: 60% para Humano / 40% para Oráculo).
+
+        Slider C: Contratos B2B (Corporativo). Simulador de MRR para mitigação de risco jurídico.
+
+        Slider D: Nível de Soberania (B2G/Big Tech Era).
+
+            Visão 10 anos: Projete o cenário onde Big Techs financiam a plataforma como Renda Básica Universal (UBI) em troca do acesso ao dataset tropicalizado.
+
+        Métrica Visual Fixa: 'Volume do Pré-Sal Digital' (Total de Consultas x 2KB de dados RLHF proprietários). Destaque: 'Dados 100% protegidos contra treinamento externo'.  
+
+    CANTEIRO DE OBRAS (VÍDEOS 16:9):
+
+        Embed Demo MVP: https://youtu.be/2D7x5QGZSwM
+
+        Embed Tese de Empregabilidade: https://youtu.be/USFeNUfXILE.  
+
+    THE ASK (PLANO DE VOO):
+
+        Card detalhando R$ 500.000,00 para 18 meses.
+
+        Gráfico de pizza mostrando a alocação: Operação/CEO Full-time (R$ 270k - garantindo execução kamikaze), Jurídico/LGPD (R$ 60k), Cloud/Segurança (R$ 90k), RP (R$ 40k), Reserva (R$ 40k)[cite: 12, 13].
+
+    VERIFIED BADGE & CONVERSÃO:
+
+        Selo azul pulsante 'Validado por Humano'.  
+
+        Botão flutuante WhatsApp (+55 16 99999-9179).
+
+        Links: LinkedIn oficial e Livro na Amazon (https://www.amazon.com/author/thalespires).
+
+
+ROTEIRO ESTRATÉGICO: ORÁCULO DE SOPHIA (PRE-SEED R$ 500K)
+
+O FOUNDER (A Fundação de Confiança):
+Antes de abrir o primeiro slide, o investidor olha para você. Eles não estão comprando um garoto de 20 anos brincando de Python. Estão comprando 25 anos de magistratura intelectual, o rigor do Direito e a sensibilidade da Arte. Thales Pires é o Centauro: a fusão da ética humana com a velocidade do silício.
+SLIDE 1: O GANCHO – A Patologia do Progresso
+
+Narrativa: A IA não é apenas uma revolução; é uma crise existencial e jurídica.
+O Tom: Freudiano/Nietzscheano.
+Script: "Senhores, o mundo está sofrendo de duas patologias terminais: a Ociosidade Funcional — onde o humano perde sua utilidade para a automação — e a Alucinação Sistêmica — onde empresas perdem bilhões confiando em LLMs estrangeiras que não conhecem o nosso contexto. A IA sem curadoria é um trem de alta velocidade sem freios. O Oráculo de SophIA não é um acessório; é o Freio ABS indispensável para a governança de dados no Brasil. Estamos resolvendo o passivo jurídico antes mesmo dele ser contabilizado."
+SLIDE 2: O PROBLEMA – O Extrativismo de Dados
+
+Narrativa: As Big Techs estão minerando nossa cultura sem deixar lucro.
+O Tom: Gallowayano/Pragmático.
+Script: "O Brasil é o 'sul global' sendo minerado. Entregamos nossa sabedoria para modelos americanos e não recebemos um centavo de MRR em troca. Isso gera um vazio de soberania e uma crise de saúde mental nas corporações que tentam implementar IA 'crua' e falham miseravelmente em conformidade e ética."
+SLIDE 3: A SOLUÇÃO – O Oráculo e o Guardião
+
+Narrativa: Human-in-the-Loop (HITL) como infraestrutura.
+Script: "Invertemos a lógica. Criamos o ecossistema onde a Vivência é o ativo. O Oráculo processa, mas o Guardião (o especialista humano) valida. É a 'tropicalização' da verdade. Transformamos o conhecimento tácito — do advogado sênior à sabedoria ancestral — em dados validados e monetizáveis."
+SLIDE 4: UNIT ECONOMICS – A Matemática do Lucro
+
+Narrativa: Eficiência de capital e escala marginal.
+O Tom: Tier 1 VC (LTV/CAC/Take Rate).
+Script: "Falemos de números crus. Nossa arquitetura permite um Take Rate de 40% (R$ 4,00 por validação). O custo marginal de processamento é desprezível comparado ao valor da chancela humana.
+
+    B2C: LTV/CAC de 61x. O usuário paga pela verdade em um mar de fakes.
+
+    B2B: LTV/CAC de 67x. Empresas pagam para mitigar riscos de milhões.
+    Isso não é um SaaS comum; é um marketplace de sabedoria com efeito de rede e Churn tendendo a zero devido ao Lock-in de confiança."
+
+SLIDE 5: GO-TO-MARKET – O Trojan Horse (Cavalo de Troia)
+
+Narrativa: Três frentes táticas para dominar o mercado em 18 meses.
+Script: 1.  Alto Risco (B2B): Foco em Direito e Saúde. Onde a alucinação da IA custa vidas ou processos. É o dinheiro imediato.
+2.  Conhecimento Tácito (B2C): Ofícios manuais e economia do cuidado. Devolvemos a renda para quem a máquina ameaça.
+3.  Tração Viral (PR): Saberes ancestrais e comunidades Geek. É o nosso motor de crescimento orgânico e autoridade cultural."
+SLIDE 6: O ATIVO – O Pré-Sal Digital
+
+Narrativa: Soberania de Dados e Fosso Defensivo (Moat).
+Script: "Enquanto as Big Techs lutam por escala, nós lutamos por Contexto. Estamos minerando o Pré-Sal Digital Brasileiro. Nosso RLHF (Reinforcement Learning from Human Feedback) é 100% tropicalizado. Esse banco de dados ético é o nosso fosso defensivo. Nenhuma LLM de San Francisco terá a granularidade da alma brasileira que o Oráculo está capturando."
+SLIDE 7: TRAÇÃO – O Arsenal Validado
+
+Narrativa: Prova social e técnica.
+Script: "Não é uma tese de papel. Fomos selecionados como ALPHA no Web Summit Rio. Possuo certificações Cisco/Hackers do Bem, garantindo que a governança não é apenas ética, mas tecnicamente resiliente. O MVP está funcional, a marca está protocolada e o ecossistema está pronto para a ignição."
+SLIDE 8: O ASK – Plano de Voo Institucional
+
+Narrativa: R$ 500.000,00 para 18 meses de dominância.
+Script: "Buscamos R$ 500k para os próximos 18 meses. Alocação estratégica:
+
+    R$ 270k (Operação/Vendas): Garantia de execução e pro-labore do Founder (R$ 15k/mês) para dedicação exclusiva — o Centauro precisa estar 100% no campo.
+
+    R$ 60k (Jurídico/LGPD): Nossa base é a lei. Compliance é produto.
+
+    R$ 90k (Cloud/Segurança): Infraestrutura robusta.
+
+    R$ 40k (RP/Eventos) + R$ 40k (Reserva): Tração e proteção."
+
+SLIDE 9: O MOONSHOT – B2G e a Auditoria da Realidade
+
+Narrativa: O Oráculo como Programa de Governo.
+O Tom: Provocador/Visionário.
+Script: "O fim do jogo não é apenas lucro; é soberania. O Oráculo de SophIA tem o potencial de se tornar a infraestrutura de Estado para a Distribuição de Renda via Saber e a Auditoria da Realidade Nacional. É o Bolsa Família da Era da Inteligência, onde o cidadão é remunerado por ser o tutor da máquina. É o Brasil liderando a governança de IA no Sul Global."
+
+FECHAMENTO:
+"A pergunta não é se a IA vai mudar o Brasil. A pergunta é: quem terá a chave do freio e o mapa do tesouro? O Oráculo de SophIA já tem ambos. Vamos construir o futuro ou apenas sermos processados por ele?"
+
+Codifique usando as melhores práticas de SEO e performance (carregamento em < 2s).
+TECNOLOGIA: Use React, Tailwind CSS e Chart.js para os gráficos dinâmicos de escala."
