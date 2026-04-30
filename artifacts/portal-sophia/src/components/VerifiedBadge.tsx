@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useSectionViewTracker, useTrackCta } from "@/hooks/useAnalytics";
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,9 +23,12 @@ function useScrollReveal() {
 
 export default function VerifiedBadge() {
   const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewTracker(sectionRef, "conversao");
+  const trackCta = useTrackCta();
 
   return (
-    <section id="contato" className="py-20 px-4 max-w-3xl mx-auto text-center">
+    <section id="contato" ref={sectionRef} className="py-20 px-4 max-w-3xl mx-auto text-center">
       <div ref={ref} className="section-hidden space-y-10">
         <div>
           <div className="inline-block px-3 py-1 text-xs tracking-widest uppercase text-yellow-400 glass-card mb-4">
@@ -74,6 +78,7 @@ export default function VerifiedBadge() {
                 color: "#fff",
                 boxShadow: "0 0 20px rgba(37, 211, 102, 0.3)",
               }}
+              onClick={() => trackCta("conversao", "WhatsApp", "https://wa.me/5516999999179")}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.boxShadow = "0 0 30px rgba(37, 211, 102, 0.6)";
               }}
@@ -97,6 +102,7 @@ export default function VerifiedBadge() {
                 border: "1px solid rgba(0, 120, 200, 0.6)",
                 color: "#66aaff",
               }}
+              onClick={() => trackCta("conversao", "LinkedIn", "https://www.linkedin.com/in/thalespires")}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.background = "rgba(0, 100, 180, 0.5)";
               }}
@@ -120,6 +126,7 @@ export default function VerifiedBadge() {
                 border: "1px solid rgba(255, 160, 0, 0.5)",
                 color: "#ffaa44",
               }}
+              onClick={() => trackCta("conversao", "Livro Amazon", "https://www.amazon.com/author/thalespires")}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.background = "rgba(255, 160, 0, 0.25)";
               }}

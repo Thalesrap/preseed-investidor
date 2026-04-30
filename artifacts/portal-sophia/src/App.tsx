@@ -8,12 +8,14 @@ import VerifiedBadge from "@/components/VerifiedBadge";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { useTrackCta } from "@/hooks/useAnalytics";
 
 function Divider() {
   return <hr className="section-divider mx-auto max-w-2xl" />;
 }
 
 function NavBar() {
+  const trackCta = useTrackCta();
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-40 py-3 px-4"
@@ -55,6 +57,7 @@ function NavBar() {
               color: "#fff",
               border: "1px solid rgba(255,255,0,0.2)",
             }}
+            onClick={() => trackCta("navbar", "Agendar Pitch", "https://wa.me/5516999999179")}
           >
             Agendar Pitch
           </a>

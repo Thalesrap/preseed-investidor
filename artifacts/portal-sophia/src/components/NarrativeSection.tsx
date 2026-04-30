@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useSectionViewTracker } from "@/hooks/useAnalytics";
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -75,9 +76,11 @@ const slides = [
 
 export default function NarrativeSection() {
   const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewTracker(sectionRef, "narrativa", 0.05);
 
   return (
-    <section id="narrativa" className="py-20 px-4 max-w-5xl mx-auto">
+    <section id="narrativa" ref={sectionRef} className="py-20 px-4 max-w-5xl mx-auto">
       <div ref={ref} className="section-hidden">
         <div className="text-center mb-12">
           <div className="inline-block px-3 py-1 text-xs tracking-widest uppercase text-yellow-400 glass-card mb-4">

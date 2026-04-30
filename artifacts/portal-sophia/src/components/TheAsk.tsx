@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Doughnut } from "react-chartjs-2";
+import { useSectionViewTracker } from "@/hooks/useAnalytics";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -91,6 +92,8 @@ const chartOptions = {
 
 export default function TheAsk() {
   const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewTracker(sectionRef, "the-ask");
 
   const allocations = [
     { label: "Operação / CEO Full-time", value: 270, color: "rgba(180, 0, 180, 1)", pct: 54, note: "R$ 15k/mês pro-labore · execução kamikaze" },
@@ -101,7 +104,7 @@ export default function TheAsk() {
   ];
 
   return (
-    <section id="the-ask" className="py-20 px-4 max-w-5xl mx-auto">
+    <section id="the-ask" ref={sectionRef} className="py-20 px-4 max-w-5xl mx-auto">
       <div ref={ref} className="section-hidden">
         <div className="text-center mb-12">
           <div className="inline-block px-3 py-1 text-xs tracking-widest uppercase text-yellow-400 glass-card mb-4">

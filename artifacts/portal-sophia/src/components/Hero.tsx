@@ -1,7 +1,11 @@
 import { useEffect, useRef } from "react";
+import { useSectionViewTracker, useTrackCta } from "@/hooks/useAnalytics";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const trackCta = useTrackCta();
+
+  useSectionViewTracker(ref as React.RefObject<HTMLElement>, "hero", 0.1);
 
   useEffect(() => {
     const el = ref.current;
@@ -65,6 +69,7 @@ export default function Hero() {
               color: "#fff",
               boxShadow: "0 0 20px rgba(102,0,102,0.5)",
             }}
+            onClick={() => trackCta("hero", "Ver o Plano de Voo", "#the-ask")}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.boxShadow = "0 0 30px rgba(102,0,102,0.8), 0 0 50px rgba(255,255,0,0.1)";
             }}
@@ -82,6 +87,7 @@ export default function Hero() {
               color: "#FFFF00",
               background: "rgba(255,255,0,0.05)",
             }}
+            onClick={() => trackCta("hero", "Simular Receita", "#simulador")}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.background = "rgba(255,255,0,0.1)";
             }}

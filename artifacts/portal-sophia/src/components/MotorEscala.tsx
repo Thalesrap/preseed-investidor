@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useSectionViewTracker, useTrackSlider } from "@/hooks/useAnalytics";
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -41,9 +42,18 @@ interface SliderProps {
   step: number;
   onChange: (v: number) => void;
   color: string;
+  onTrack: (v: number) => void;
 }
 
-function SliderBlock({ label, sublabel, value, min, max, step, onChange, color }: SliderProps) {
+function SliderBlock({ label, sublabel, value, min, max, step, onChange, color, onTrack }: SliderProps) {
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function handleChange(v: number) {
+    onChange(v);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => onTrack(v), 600);
+  }
+
   return (
     <div className="space-y-3">
       <div className="flex justify-between items-end">
@@ -59,7 +69,7 @@ function SliderBlock({ label, sublabel, value, min, max, step, onChange, color }
         max={max}
         step={step}
         value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={(e) => handleChange(Number(e.target.value))}
         className="slider-sophia"
       />
       <div className="flex justify-between text-xs text-purple-500">
@@ -72,6 +82,9 @@ function SliderBlock({ label, sublabel, value, min, max, step, onChange, color }
 
 export default function MotorEscala() {
   const ref = useScrollReveal();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewTracker(sectionRef, "simulador", 0.05);
+  const trackSlider = useTrackSlider("simulador");
 
   const [guardioes, setGuardioes] = useState(500);
   const [validacoes, setValidacoes] = useState(200);
@@ -92,7 +105,7 @@ export default function MotorEscala() {
   const mrr_total = receita_b2c_saas + receita_validacoes + receita_b2b;
 
   return (
-    <section id="simulador" className="py-20 px-4 max-w-5xl mx-auto">
+    <section id="simulador" ref={sectionRef} className="py-20 px-4 max-w-5xl mx-auto">
       <div ref={ref} className="section-hidden">
         <div className="text-center mb-12">
           <div className="inline-block px-3 py-1 text-xs tracking-widest uppercase text-yellow-400 glass-card mb-4">
@@ -117,6 +130,7 @@ export default function MotorEscala() {
               step={100}
               onChange={setGuardioes}
               color="#FFFF00"
+              onTrack={(v) => trackSlider("guardioes_b2c", v)}
             />
             <div className="glass-card-strong p-3 flex justify-between items-center">
               <span className="text-xs text-purple-300">Receita Recorrente SaaS</span>
@@ -132,6 +146,7 @@ export default function MotorEscala() {
               step={50}
               onChange={setValidacoes}
               color="#cc88ff"
+              onTrack={(v) => trackSlider("validacoes_b2c", v)}
             />
             <div className="glass-card-strong p-3 space-y-2">
               <div className="flex justify-between items-center">
@@ -153,6 +168,7 @@ export default function MotorEscala() {
               step={1}
               onChange={setB2bContratos}
               color="#66ffcc"
+              onTrack={(v) => trackSlider("contratos_b2b", v)}
             />
             <div className="glass-card-strong p-3 flex justify-between items-center">
               <span className="text-xs text-purple-300">Receita B2B</span>
@@ -171,6 +187,7 @@ export default function MotorEscala() {
                 step={1}
                 onChange={setSoberania}
                 color="#ff9944"
+                onTrack={(v) => trackSlider("soberania_b2g", v)}
               />
               <div className="space-y-2">
                 {[
