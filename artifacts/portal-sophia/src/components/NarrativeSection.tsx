@@ -84,7 +84,7 @@ export default function NarrativeSection() {
             Roteiro Estratégico
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            A Nar<span className="ia-highlight">rat</span>iva
+            A Tese da Soph<span className="ia-highlight">IA</span>
           </h2>
           <p className="text-purple-300 mt-3 text-sm md:text-base max-w-xl mx-auto">
             Do gancho ao moonshot — a tese completa para o primeiro unicórnio de soberania digital do Brasil

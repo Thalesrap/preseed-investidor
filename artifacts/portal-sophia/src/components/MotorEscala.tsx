@@ -99,7 +99,7 @@ export default function MotorEscala() {
             Simulador de ROI
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            Motor de Escala Panor<span className="ia-highlight">âm</span>ico
+            Simulador de Rece<span className="ia-highlight">IA</span>
           </h2>
           <p className="text-purple-300 mt-3 text-sm md:text-base max-w-xl mx-auto">
             Ajuste os sliders e veja a matemática do lucro em tempo real

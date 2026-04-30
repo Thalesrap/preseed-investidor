@@ -5,6 +5,7 @@ import {
   ArcElement,
   Tooltip,
   Legend,
+  type TooltipItem,
 } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -69,7 +70,7 @@ const chartOptions = {
     },
     tooltip: {
       callbacks: {
-        label: (context: any) => {
+        label: (context: TooltipItem<"doughnut">) => {
           const value = context.raw as number;
           return ` R$ ${value}k — ${context.label}`;
         },
@@ -107,7 +108,7 @@ export default function TheAsk() {
             Plano de Voo
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            The Ask — R$ 500k
+            Invista na Soph<span className="ia-highlight">IA</span> — R$ 500k
           </h2>
           <p className="text-purple-300 mt-3 text-sm md:text-base max-w-xl mx-auto">
             18 meses de dominância. Alocação estratégica para conquista total.

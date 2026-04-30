@@ -31,7 +31,7 @@ export default function VerifiedBadge() {
             Conversão
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            Ver<span className="ia-highlight">if</span>icado por Humano
+            Soph<span className="ia-highlight">IA</span> Validada por Humano
           </h2>
           <p className="text-purple-300 mt-3 text-sm md:text-base max-w-xl mx-auto">
             A pergunta não é se a IA vai mudar o Brasil. A pergunta é: quem terá a chave do freio

@@ -31,7 +31,7 @@ export default function CanteiroObras() {
             Prova de Conceito
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            Canteiro de Obras
+            Canteiro de Obras da Soph<span className="ia-highlight">IA</span>
           </h2>
           <p className="text-purple-300 mt-3 text-sm md:text-base max-w-xl mx-auto">
             Não é uma tese de papel. O MVP está funcional, a marca está protocolada.

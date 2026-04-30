@@ -31,7 +31,7 @@ export default function GabineteCentauro() {
             O Fundador
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            O Gab<span className="ia-highlight">in</span>ete do Centauro
+            O Fundador da Soph<span className="ia-highlight">IA</span>
           </h2>
           <p className="text-purple-300 mt-3 text-sm md:text-base max-w-xl mx-auto">
             A fusão da ética humana com a velocidade do silício
