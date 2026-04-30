@@ -22,10 +22,14 @@ function useScrollReveal() {
   return ref;
 }
 
-function formatBRL(value: number): string {
-  if (value >= 1_000_000) return `R$ ${(value / 1_000_000).toFixed(2)}M`;
-  if (value >= 1_000) return `R$ ${(value / 1_000).toFixed(1)}k`;
-  return `R$ ${value.toFixed(2)}`;
+function formatCurrency(value: number, locale: string): string {
+  const isBR = locale === "pt-BR";
+  const symbol = isBR ? "R$ " : "$";
+  const fmt = (n: number, decimals: number) =>
+    n.toLocaleString(locale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  if (value >= 1_000_000) return `${symbol}${fmt(value / 1_000_000, 2)}M`;
+  if (value >= 1_000) return `${symbol}${fmt(value / 1_000, 1)}k`;
+  return `${symbol}${fmt(value, 2)}`;
 }
 
 function formatBytes(bytes: number): string {
@@ -44,9 +48,10 @@ interface SliderProps {
   onChange: (v: number) => void;
   color: string;
   onTrack: (v: number) => void;
+  locale: string;
 }
 
-function SliderBlock({ label, sublabel, value, min, max, step, onChange, color, onTrack }: SliderProps) {
+function SliderBlock({ label, sublabel, value, min, max, step, onChange, color, onTrack, locale }: SliderProps) {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   function handleChange(v: number) {
@@ -62,7 +67,7 @@ function SliderBlock({ label, sublabel, value, min, max, step, onChange, color, 
           <div className="font-semibold text-white text-sm">{label}</div>
           <div className="text-xs text-purple-400">{sublabel}</div>
         </div>
-        <div className="font-display font-bold text-lg" style={{ color }}>{value.toLocaleString()}</div>
+        <div className="font-display font-bold text-lg" style={{ color }}>{value.toLocaleString(locale)}</div>
       </div>
       <input
         type="range"
@@ -74,8 +79,8 @@ function SliderBlock({ label, sublabel, value, min, max, step, onChange, color, 
         className="slider-sophia"
       />
       <div className="flex justify-between text-xs text-purple-500">
-        <span>{min.toLocaleString()}</span>
-        <span>{max.toLocaleString()}</span>
+        <span>{min.toLocaleString(locale)}</span>
+        <span>{max.toLocaleString(locale)}</span>
       </div>
     </div>
   );
@@ -86,8 +91,9 @@ export default function MotorEscala() {
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewTracker(sectionRef, "simulador", 0.05);
   const trackSlider = useTrackSlider("simulador");
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const s = t.simulator;
+  const locale = lang === "pt" ? "pt-BR" : "en-US";
 
   const [guardioes, setGuardioes] = useState(500);
   const [validacoes, setValidacoes] = useState(200);
@@ -134,10 +140,11 @@ export default function MotorEscala() {
               onChange={setGuardioes}
               color="#FFFF00"
               onTrack={(v) => trackSlider("guardioes_b2c", v)}
+              locale={locale}
             />
             <div className="glass-card-strong p-3 flex justify-between items-center">
               <span className="text-xs text-purple-300">{s.saasRevenue}</span>
-              <span className="font-display font-bold text-yellow-400">{formatBRL(receita_b2c_saas)}{s.perMonth}</span>
+              <span className="font-display font-bold text-yellow-400">{formatCurrency(receita_b2c_saas, locale)}{s.perMonth}</span>
             </div>
 
             <SliderBlock
@@ -150,15 +157,16 @@ export default function MotorEscala() {
               onChange={setValidacoes}
               color="#cc88ff"
               onTrack={(v) => trackSlider("validacoes_b2c", v)}
+              locale={locale}
             />
             <div className="glass-card-strong p-3 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-xs text-green-400">{s.humanShare}</span>
-                <span className="font-bold text-green-400">{formatBRL(receita_humano)}</span>
+                <span className="font-bold text-green-400">{formatCurrency(receita_humano, locale)}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-purple-300">{s.oracleShare}</span>
-                <span className="font-bold text-purple-300">{formatBRL(receita_oraculo)}</span>
+                <span className="font-bold text-purple-300">{formatCurrency(receita_oraculo, locale)}</span>
               </div>
             </div>
 
@@ -172,10 +180,11 @@ export default function MotorEscala() {
               onChange={setB2bContratos}
               color="#66ffcc"
               onTrack={(v) => trackSlider("contratos_b2b", v)}
+              locale={locale}
             />
             <div className="glass-card-strong p-3 flex justify-between items-center">
               <span className="text-xs text-purple-300">{s.b2bRevenue}</span>
-              <span className="font-display font-bold text-emerald-400">{formatBRL(receita_b2b)}{s.perMonth}</span>
+              <span className="font-display font-bold text-emerald-400">{formatCurrency(receita_b2b, locale)}{s.perMonth}</span>
             </div>
           </div>
 
@@ -191,6 +200,7 @@ export default function MotorEscala() {
                 onChange={setSoberania}
                 color="#ff9944"
                 onTrack={(v) => trackSlider("soberania_b2g", v)}
+                locale={locale}
               />
               <div className="space-y-2">
                 {s.sovereigntyLevels.map((level) => (
@@ -213,7 +223,7 @@ export default function MotorEscala() {
               <div className="glass-card-strong p-3">
                 <div className="text-xs text-orange-400 mb-1">{s.moonshot10y}</div>
                 <div className="font-display font-black text-xl text-orange-300">
-                  {formatBRL(receita_b2g_projection)}
+                  {formatCurrency(receita_b2g_projection, locale)}
                 </div>
                 <div className="text-xs text-purple-400 mt-1">{s.moonshotNote}</div>
               </div>
@@ -226,7 +236,7 @@ export default function MotorEscala() {
               <div className="text-center">
                 <div className="text-xs uppercase tracking-widest text-yellow-400 mb-2">{s.mrrLabel}</div>
                 <div className="font-display text-3xl md:text-4xl font-black neon-text">
-                  {formatBRL(mrr_total)}
+                  {formatCurrency(mrr_total, locale)}
                 </div>
                 <div className="text-xs text-purple-400 mt-1">{s.mrrSub}</div>
               </div>
@@ -245,7 +255,7 @@ export default function MotorEscala() {
                   {formatBytes(presalVolume)}
                 </div>
                 <div className="text-xs text-blue-400 mt-1">
-                  {totalConsultas.toLocaleString()} {s.presalNote}
+                  {totalConsultas.toLocaleString(locale)} {s.presalNote}
                 </div>
                 <div
                   className="mt-2 text-xs font-semibold px-2 py-1 rounded inline-block"
