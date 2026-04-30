@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useCreateLead } from "@workspace/api-client-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,18 +22,11 @@ function useScrollReveal() {
   return ref;
 }
 
-const INVESTMENT_OPTIONS = [
-  "Investimento Anjo (até R$ 500k)",
-  "Seed (R$ 500k – R$ 2M)",
-  "Série A (R$ 2M – R$ 10M)",
-  "Série B+ (acima de R$ 10M)",
-  "Parceria Estratégica",
-  "Ainda explorando",
-];
-
 export default function ContactForm() {
   const ref = useScrollReveal();
   const mutation = useCreateLead();
+  const { t } = useLanguage();
+  const c = t.contact;
 
   const [form, setForm] = useState({
     name: "",
@@ -46,12 +40,12 @@ export default function ContactForm() {
 
   const validate = () => {
     const errors: Record<string, string> = {};
-    if (!form.name.trim()) errors.name = "Nome é obrigatório";
+    if (!form.name.trim()) errors.name = c.validationName;
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email))
-      errors.email = "Email válido é obrigatório";
-    if (!form.company.trim()) errors.company = "Empresa é obrigatória";
-    if (!form.investmentInterest) errors.investmentInterest = "Selecione um nível";
-    if (!form.message.trim()) errors.message = "Mensagem é obrigatória";
+      errors.email = c.validationEmail;
+    if (!form.company.trim()) errors.company = c.validationCompany;
+    if (!form.investmentInterest) errors.investmentInterest = c.validationInterest;
+    if (!form.message.trim()) errors.message = c.validationMessage;
     return errors;
   };
 
@@ -90,15 +84,14 @@ export default function ContactForm() {
       <div ref={ref} className="section-hidden">
         <div className="text-center mb-10 space-y-3">
           <div className="inline-block px-3 py-1 text-xs tracking-widest uppercase text-yellow-400 glass-card mb-2">
-            Contato Direto
+            {c.sectionLabel}
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            Vamos Conversar sobre o{" "}
-            <span className="ia-highlight">Futuro</span>
+            {c.title}
+            <span className="ia-highlight">{c.titleHighlight}</span>
           </h2>
           <p className="text-purple-300 text-sm md:text-base max-w-xl mx-auto">
-            Preencha o formulário abaixo e entraremos em contato para agendar
-            uma conversa sobre como podemos construir juntos.
+            {c.subtitle}
           </p>
         </div>
 
@@ -113,11 +106,10 @@ export default function ContactForm() {
             <div className="text-center py-10 space-y-4">
               <div className="text-5xl">✅</div>
               <h3 className="font-display text-xl font-bold text-white">
-                Mensagem Enviada!
+                {c.successTitle}
               </h3>
               <p className="text-purple-300 text-sm max-w-sm mx-auto">
-                Obrigado pelo seu interesse. Nossa equipe entrará em contato em
-                até 48 horas.
+                {c.successDesc}
               </p>
             </div>
           ) : (
@@ -125,14 +117,14 @@ export default function ContactForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs text-purple-300 mb-1 font-semibold uppercase tracking-wider">
-                    Nome *
+                    {c.nameLabel}
                   </label>
                   <input
                     type="text"
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="Seu nome completo"
+                    placeholder={c.namePlaceholder}
                     className={`${inputClass} ${inputFocusRing}`}
                     style={inputStyle}
                   />
@@ -142,14 +134,14 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <label className="block text-xs text-purple-300 mb-1 font-semibold uppercase tracking-wider">
-                    Email *
+                    {c.emailLabel}
                   </label>
                   <input
                     type="email"
                     name="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="seu@email.com"
+                    placeholder={c.emailPlaceholder}
                     className={`${inputClass} ${inputFocusRing}`}
                     style={inputStyle}
                   />
@@ -161,14 +153,14 @@ export default function ContactForm() {
 
               <div>
                 <label className="block text-xs text-purple-300 mb-1 font-semibold uppercase tracking-wider">
-                  Empresa *
+                  {c.companyLabel}
                 </label>
                 <input
                   type="text"
                   name="company"
                   value={form.company}
                   onChange={handleChange}
-                  placeholder="Nome da sua empresa ou fundo"
+                  placeholder={c.companyPlaceholder}
                   className={`${inputClass} ${inputFocusRing}`}
                   style={inputStyle}
                 />
@@ -179,7 +171,7 @@ export default function ContactForm() {
 
               <div>
                 <label className="block text-xs text-purple-300 mb-1 font-semibold uppercase tracking-wider">
-                  Interesse de Investimento *
+                  {c.interestLabel}
                 </label>
                 <select
                   name="investmentInterest"
@@ -189,9 +181,9 @@ export default function ContactForm() {
                   style={{ ...inputStyle, color: form.investmentInterest ? "#fff" : "#a855f7" }}
                 >
                   <option value="" disabled style={{ background: "#0a0022" }}>
-                    Selecione o nível de interesse
+                    {c.interestPlaceholder}
                   </option>
-                  {INVESTMENT_OPTIONS.map((opt) => (
+                  {c.investmentOptions.map((opt) => (
                     <option key={opt} value={opt} style={{ background: "#0a0022" }}>
                       {opt}
                     </option>
@@ -204,14 +196,14 @@ export default function ContactForm() {
 
               <div>
                 <label className="block text-xs text-purple-300 mb-1 font-semibold uppercase tracking-wider">
-                  Mensagem *
+                  {c.messageLabel}
                 </label>
                 <textarea
                   name="message"
                   value={form.message}
                   onChange={handleChange}
                   rows={4}
-                  placeholder="Conte um pouco sobre seu interesse e como podemos colaborar..."
+                  placeholder={c.messagePlaceholder}
                   className={`${inputClass} ${inputFocusRing} resize-none`}
                   style={inputStyle}
                 />
@@ -222,7 +214,7 @@ export default function ContactForm() {
 
               {mutation.isError && (
                 <p className="text-red-400 text-sm text-center">
-                  Ocorreu um erro ao enviar. Por favor, tente novamente.
+                  {c.errorMsg}
                 </p>
               )}
 
@@ -239,7 +231,7 @@ export default function ContactForm() {
                   boxShadow: mutation.isPending ? "none" : "0 0 30px rgba(153,0,153,0.4)",
                 }}
               >
-                {mutation.isPending ? "Enviando..." : "Enviar Mensagem →"}
+                {mutation.isPending ? c.submitting : c.submitBtn}
               </button>
             </form>
           )}

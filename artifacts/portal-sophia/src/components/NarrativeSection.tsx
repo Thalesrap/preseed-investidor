@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useSectionViewTracker } from "@/hooks/useAnalytics";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,81 +22,30 @@ function useScrollReveal() {
   return ref;
 }
 
-const slides = [
-  {
-    num: "01",
-    title: "O Gancho",
-    subtitle: "A Patologia do Progresso",
-    content:
-      "O mundo sofre de duas patologias terminais: a Ociosidade Funcional — onde o humano perde sua utilidade para a automação — e a Alucinação Sistêmica — onde empresas perdem bilhões confiando em LLMs estrangeiras. A IA sem curadoria é um trem de alta velocidade sem freios.",
-    highlight: "Freio ABS",
-    icon: "🚂",
-    color: "#cc44cc",
-  },
-  {
-    num: "02",
-    title: "O Problema",
-    subtitle: "O Extrativismo de Dados",
-    content:
-      "O Brasil é o 'sul global' sendo minerado. Entregamos nossa sabedoria para modelos americanos e não recebemos um centavo de MRR em troca. Isso gera um vazio de soberania e uma crise de saúde mental nas corporações que tentam implementar IA 'crua'.",
-    highlight: "Soberania",
-    icon: "⛏️",
-    color: "#ff6644",
-  },
-  {
-    num: "03",
-    title: "A Solução",
-    subtitle: "O Oráculo e o Guardião",
-    content:
-      "Invertemos a lógica. Criamos o ecossistema onde a Vivência é o ativo. O Oráculo processa, mas o Guardião (o especialista humano) valida. É a 'tropicalização' da verdade. Transformamos conhecimento tácito em dados validados e monetizáveis.",
-    highlight: "HITL",
-    icon: "🛡️",
-    color: "#44cccc",
-  },
-  {
-    num: "04",
-    title: "Unit Economics",
-    subtitle: "A Matemática do Lucro",
-    content:
-      "Take Rate de 40% (R$ 4,00 por validação). B2C: LTV/CAC de 61x. B2B: LTV/CAC de 67x. Marketplace de sabedoria com efeito de rede e Churn tendendo a zero devido ao Lock-in de confiança.",
-    highlight: "67x LTV/CAC",
-    icon: "📊",
-    color: "#FFFF00",
-  },
-  {
-    num: "09",
-    title: "O Moonshot",
-    subtitle: "B2G e a Auditoria da Realidade",
-    content:
-      "O Oráculo de SophIA tem o potencial de se tornar a infraestrutura de Estado para a Distribuição de Renda via Saber. É o Bolsa Família da Era da Inteligência — o cidadão remunerado por ser o tutor da máquina. O Brasil liderando a governança de IA no Sul Global.",
-    highlight: "RBU Digital",
-    icon: "🌍",
-    color: "#44aaff",
-  },
-];
-
 export default function NarrativeSection() {
   const ref = useScrollReveal();
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewTracker(sectionRef, "narrativa", 0.05);
+  const { t } = useLanguage();
+  const n = t.narrative;
 
   return (
     <section id="narrativa" ref={sectionRef} className="py-20 px-4 max-w-5xl mx-auto">
       <div ref={ref} className="section-hidden">
         <div className="text-center mb-12">
           <div className="inline-block px-3 py-1 text-xs tracking-widest uppercase text-yellow-400 glass-card mb-4">
-            Roteiro Estratégico
+            {n.sectionLabel}
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            A Tese da Soph<span className="ia-highlight">IA</span>
+            {n.title}<span className="ia-highlight">IA</span>
           </h2>
           <p className="text-purple-300 mt-3 text-sm md:text-base max-w-xl mx-auto">
-            Do gancho ao moonshot — a tese completa para o primeiro unicórnio de soberania digital do Brasil
+            {n.subtitle}
           </p>
         </div>
 
         <div className="space-y-4">
-          {slides.map((slide, i) => (
+          {n.slides.map((slide, i) => (
             <div
               key={slide.num}
               className="glass-card p-5 md:p-6 flex gap-4 md:gap-6 items-start transition-all duration-300 hover:purple-glow cursor-default"

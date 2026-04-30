@@ -9,13 +9,52 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { useTrackCta } from "@/hooks/useAnalytics";
+import { LanguageProvider, useLanguage } from "@/contexts/LanguageContext";
 
 function Divider() {
   return <hr className="section-divider mx-auto max-w-2xl" />;
 }
 
+function LanguageToggle() {
+  const { lang, setLang } = useLanguage();
+  return (
+    <div
+      className="flex items-center rounded-lg overflow-hidden text-xs font-bold"
+      style={{
+        border: "1px solid rgba(102,0,102,0.5)",
+        background: "rgba(20,0,50,0.6)",
+      }}
+    >
+      <button
+        onClick={() => setLang("pt")}
+        className="px-2 py-1 transition-all duration-200 flex items-center gap-1"
+        style={{
+          background: lang === "pt" ? "rgba(102,0,102,0.7)" : "transparent",
+          color: lang === "pt" ? "#fff" : "#a855f7",
+        }}
+        aria-label="Português"
+      >
+        🇧🇷 PT
+      </button>
+      <div style={{ width: "1px", background: "rgba(102,0,102,0.5)", alignSelf: "stretch" }} />
+      <button
+        onClick={() => setLang("en")}
+        className="px-2 py-1 transition-all duration-200 flex items-center gap-1"
+        style={{
+          background: lang === "en" ? "rgba(102,0,102,0.7)" : "transparent",
+          color: lang === "en" ? "#fff" : "#a855f7",
+        }}
+        aria-label="English"
+      >
+        🇺🇸 EN
+      </button>
+    </div>
+  );
+}
+
 function NavBar() {
   const trackCta = useTrackCta();
+  const { t } = useLanguage();
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-40 py-3 px-4"
@@ -32,12 +71,12 @@ function NavBar() {
             Oráculo de Soph<span className="ia-highlight">IA</span>
           </span>
         </div>
-        <div className="flex items-center gap-1 sm:gap-4">
+        <div className="flex items-center gap-1 sm:gap-3">
           {[
-            { href: "#simulador", label: "Simulador" },
-            { href: "#canteiro", label: "Demo" },
-            { href: "#the-ask", label: "The Ask" },
-            { href: "#contato", label: "Contato" },
+            { href: "#simulador", label: t.nav.simulator },
+            { href: "#canteiro", label: t.nav.demo },
+            { href: "#the-ask", label: t.nav.theAsk },
+            { href: "#contato", label: t.nav.contact },
           ].map((link) => (
             <a
               key={link.href}
@@ -47,6 +86,7 @@ function NavBar() {
               {link.label}
             </a>
           ))}
+          <LanguageToggle />
           <a
             href="https://wa.me/5516999999179"
             target="_blank"
@@ -57,9 +97,9 @@ function NavBar() {
               color: "#fff",
               border: "1px solid rgba(255,255,0,0.2)",
             }}
-            onClick={() => trackCta("navbar", "Agendar Pitch", "https://wa.me/5516999999179")}
+            onClick={() => trackCta("navbar", t.nav.scheduleButton, "https://wa.me/5516999999179")}
           >
-            Agendar Pitch
+            {t.nav.scheduleButton}
           </a>
         </div>
       </div>
@@ -67,7 +107,7 @@ function NavBar() {
   );
 }
 
-export default function App() {
+function AppInner() {
   return (
     <div
       className="min-h-screen"
@@ -94,5 +134,13 @@ export default function App() {
       <Footer />
       <FloatingWhatsApp />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppInner />
+    </LanguageProvider>
   );
 }

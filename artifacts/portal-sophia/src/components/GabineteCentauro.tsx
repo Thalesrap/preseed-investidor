@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useSectionViewTracker } from "@/hooks/useAnalytics";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -25,19 +26,21 @@ export default function GabineteCentauro() {
   const ref = useScrollReveal();
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewTracker(sectionRef, "fundador");
+  const { t } = useLanguage();
+  const f = t.founder;
 
   return (
     <section id="fundador" ref={sectionRef} className="py-20 px-4 max-w-5xl mx-auto">
       <div ref={ref} className="section-hidden">
         <div className="text-center mb-12">
           <div className="inline-block px-3 py-1 text-xs tracking-widest uppercase text-yellow-400 glass-card mb-4">
-            O Fundador
+            {f.sectionLabel}
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            Gabinete do Centauro · Soph<span className="ia-highlight">IA</span>
+            {f.title}<span className="ia-highlight">IA</span>
           </h2>
           <p className="text-purple-300 mt-3 text-sm md:text-base max-w-xl mx-auto">
-            A fusão da ética humana com a velocidade do silício
+            {f.subtitle}
           </p>
         </div>
 
@@ -55,10 +58,10 @@ export default function GabineteCentauro() {
             </div>
             <div className="text-center lg:text-left">
               <div className="font-display font-bold text-lg text-white">Thales Pires</div>
-              <div className="text-purple-300 text-sm">Founder & CEO</div>
+              <div className="text-purple-300 text-sm">{f.role}</div>
             </div>
             <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
-              {["Direito Estratégico", "IA / ML", "LGPD", "Web Summit Rio Alpha"].map((tag) => (
+              {f.tags.map((tag) => (
                 <span
                   key={tag}
                   className="text-xs px-2 py-1 rounded-full"
@@ -76,21 +79,29 @@ export default function GabineteCentauro() {
 
           <div className="flex-1 space-y-6">
             <p className="text-base md:text-lg text-purple-100 leading-relaxed">
-              <span className="font-bold text-white">O Centauro:</span> 25 anos de magistratura
-              intelectual no Direito Estratégico fusionados à graduação em Inteligência Artificial.
-              Não é um garoto de 20 anos brincando de Python — é a fusão do rigor jurídico com a
-              velocidade do silício.
+              {f.bio.split(/<strong>|<\/strong>/).map((part, i) => (
+                i % 2 === 1
+                  ? <span key={i} className="font-bold text-white">{part}</span>
+                  : <span key={i}>{part}</span>
+              ))}
             </p>
 
             <p className="text-sm md:text-base text-purple-200 leading-relaxed">
-              "A IA sem curadoria é um trem de alta velocidade sem freios. Nós construímos o sistema
-              de freios — o Oráculo de SophIA é o <span className="text-yellow-400 font-semibold">Freio ABS indispensável</span> para a
-              governança de dados no Brasil."
+              {f.quote.split("<yellow>").map((part, i) => {
+                if (i === 0) return part;
+                const [highlighted, rest] = part.split("</yellow>");
+                return (
+                  <span key={i}>
+                    <span className="text-yellow-400 font-semibold">{highlighted}</span>
+                    {rest}
+                  </span>
+                );
+              })}
             </p>
 
             <div className="space-y-4 pt-2">
               <div className="text-xs uppercase tracking-widest text-purple-400 font-semibold">
-                Selos de Resiliência Técnica
+                {f.badgesLabel}
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <div
@@ -102,8 +113,8 @@ export default function GabineteCentauro() {
                 >
                   <div className="text-2xl">🛡️</div>
                   <div>
-                    <div className="font-bold text-blue-300 text-sm">Cibersegurança Cisco</div>
-                    <div className="text-xs text-blue-400 opacity-80">Certified Security Professional</div>
+                    <div className="font-bold text-blue-300 text-sm">{f.certCisco}</div>
+                    <div className="text-xs text-blue-400 opacity-80">{f.certCiscoSub}</div>
                   </div>
                 </div>
 
@@ -116,20 +127,15 @@ export default function GabineteCentauro() {
                 >
                   <div className="text-2xl">🔍</div>
                   <div>
-                    <div className="font-bold text-green-300 text-sm">Forense Digital</div>
-                    <div className="text-xs text-green-400 opacity-80">Hackers do Bem — CISA/SENAI</div>
+                    <div className="font-bold text-green-300 text-sm">{f.certForensic}</div>
+                    <div className="text-xs text-green-400 opacity-80">{f.certForensicSub}</div>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-              {[
-                { icon: "🏛️", label: "25 Anos Direito" },
-                { icon: "🤖", label: "IA / ML Grad." },
-                { icon: "🌐", label: "Web Summit Rio" },
-                { icon: "📘", label: "Autor Amazon" },
-              ].map((item) => (
+              {f.achievements.map((item) => (
                 <div
                   key={item.label}
                   className="flex flex-col items-center gap-1 p-3 rounded-lg text-center"

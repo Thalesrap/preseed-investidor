@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSectionViewTracker, useTrackSlider } from "@/hooks/useAnalytics";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -61,7 +62,7 @@ function SliderBlock({ label, sublabel, value, min, max, step, onChange, color, 
           <div className="font-semibold text-white text-sm">{label}</div>
           <div className="text-xs text-purple-400">{sublabel}</div>
         </div>
-        <div className="font-display font-bold text-lg" style={{ color }}>{value.toLocaleString("pt-BR")}</div>
+        <div className="font-display font-bold text-lg" style={{ color }}>{value.toLocaleString()}</div>
       </div>
       <input
         type="range"
@@ -73,8 +74,8 @@ function SliderBlock({ label, sublabel, value, min, max, step, onChange, color, 
         className="slider-sophia"
       />
       <div className="flex justify-between text-xs text-purple-500">
-        <span>{min.toLocaleString("pt-BR")}</span>
-        <span>{max.toLocaleString("pt-BR")}</span>
+        <span>{min.toLocaleString()}</span>
+        <span>{max.toLocaleString()}</span>
       </div>
     </div>
   );
@@ -85,6 +86,8 @@ export default function MotorEscala() {
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewTracker(sectionRef, "simulador", 0.05);
   const trackSlider = useTrackSlider("simulador");
+  const { t } = useLanguage();
+  const s = t.simulator;
 
   const [guardioes, setGuardioes] = useState(500);
   const [validacoes, setValidacoes] = useState(200);
@@ -109,21 +112,21 @@ export default function MotorEscala() {
       <div ref={ref} className="section-hidden">
         <div className="text-center mb-12">
           <div className="inline-block px-3 py-1 text-xs tracking-widest uppercase text-yellow-400 glass-card mb-4">
-            Simulador de ROI
+            {s.sectionLabel}
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black">
-            Simulador de Rece<span className="ia-highlight">IA</span>
+            {s.title}<span className="ia-highlight">IA</span>
           </h2>
           <p className="text-purple-300 mt-3 text-sm md:text-base max-w-xl mx-auto">
-            Ajuste os sliders e veja a matemática do lucro em tempo real
+            {s.subtitle}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="glass-card purple-glow p-6 space-y-6">
             <SliderBlock
-              label="Slider A — Guardiões B2C"
-              sublabel="Assinantes SaaS × R$ 19,90/mês"
+              label={s.sliderA.label}
+              sublabel={s.sliderA.sublabel}
               value={guardioes}
               min={100}
               max={10000}
@@ -133,13 +136,13 @@ export default function MotorEscala() {
               onTrack={(v) => trackSlider("guardioes_b2c", v)}
             />
             <div className="glass-card-strong p-3 flex justify-between items-center">
-              <span className="text-xs text-purple-300">Receita Recorrente SaaS</span>
-              <span className="font-display font-bold text-yellow-400">{formatBRL(receita_b2c_saas)}/mês</span>
+              <span className="text-xs text-purple-300">{s.saasRevenue}</span>
+              <span className="font-display font-bold text-yellow-400">{formatBRL(receita_b2c_saas)}{s.perMonth}</span>
             </div>
 
             <SliderBlock
-              label="Slider B — Validações B2C"
-              sublabel="Consultas × R$ 99,00 (split 60/40)"
+              label={s.sliderB.label}
+              sublabel={s.sliderB.sublabel}
               value={validacoes}
               min={50}
               max={5000}
@@ -150,18 +153,18 @@ export default function MotorEscala() {
             />
             <div className="glass-card-strong p-3 space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-xs text-green-400">👤 60% Humano</span>
+                <span className="text-xs text-green-400">{s.humanShare}</span>
                 <span className="font-bold text-green-400">{formatBRL(receita_humano)}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-xs text-purple-300">🤖 40% Oráculo</span>
+                <span className="text-xs text-purple-300">{s.oracleShare}</span>
                 <span className="font-bold text-purple-300">{formatBRL(receita_oraculo)}</span>
               </div>
             </div>
 
             <SliderBlock
-              label="Slider C — Contratos B2B"
-              sublabel="MRR Corporativo × R$ 2.500/contrato"
+              label={s.sliderC.label}
+              sublabel={s.sliderC.sublabel}
               value={b2bContratos}
               min={1}
               max={100}
@@ -171,16 +174,16 @@ export default function MotorEscala() {
               onTrack={(v) => trackSlider("contratos_b2b", v)}
             />
             <div className="glass-card-strong p-3 flex justify-between items-center">
-              <span className="text-xs text-purple-300">Receita B2B</span>
-              <span className="font-display font-bold text-emerald-400">{formatBRL(receita_b2b)}/mês</span>
+              <span className="text-xs text-purple-300">{s.b2bRevenue}</span>
+              <span className="font-display font-bold text-emerald-400">{formatBRL(receita_b2b)}{s.perMonth}</span>
             </div>
           </div>
 
           <div className="space-y-6">
             <div className="glass-card purple-glow p-6 space-y-5">
               <SliderBlock
-                label="Slider D — Nível de Soberania B2G"
-                sublabel="Escala geopolítica (1=Local → 5=Global UBI)"
+                label={s.sliderD.label}
+                sublabel={s.sliderD.sublabel}
                 value={soberania}
                 min={1}
                 max={5}
@@ -190,13 +193,7 @@ export default function MotorEscala() {
                 onTrack={(v) => trackSlider("soberania_b2g", v)}
               />
               <div className="space-y-2">
-                {[
-                  { n: 1, label: "Local — Atuação Regional" },
-                  { n: 2, label: "Nacional — Plataforma Brasil" },
-                  { n: 3, label: "Sul Global — Exportação Cultural" },
-                  { n: 4, label: "Big Tech Partnership" },
-                  { n: 5, label: "🌍 UBI — Renda Básica via Saber" },
-                ].map((level) => (
+                {s.sovereigntyLevels.map((level) => (
                   <div
                     key={level.n}
                     className="flex items-center gap-2 px-3 py-2 rounded-md text-xs transition-all duration-300"
@@ -214,11 +211,11 @@ export default function MotorEscala() {
                 ))}
               </div>
               <div className="glass-card-strong p-3">
-                <div className="text-xs text-orange-400 mb-1">Projeção 10 Anos (Cenário Moonshot)</div>
+                <div className="text-xs text-orange-400 mb-1">{s.moonshot10y}</div>
                 <div className="font-display font-black text-xl text-orange-300">
                   {formatBRL(receita_b2g_projection)}
                 </div>
-                <div className="text-xs text-purple-400 mt-1">Big Techs financiam como RBU Tropicalizado</div>
+                <div className="text-xs text-purple-400 mt-1">{s.moonshotNote}</div>
               </div>
             </div>
 
@@ -227,11 +224,11 @@ export default function MotorEscala() {
               style={{ border: "1px solid rgba(255,255,0,0.3)", boxShadow: "0 0 20px rgba(255,255,0,0.1)" }}
             >
               <div className="text-center">
-                <div className="text-xs uppercase tracking-widest text-yellow-400 mb-2">MRR Total Projetado</div>
+                <div className="text-xs uppercase tracking-widest text-yellow-400 mb-2">{s.mrrLabel}</div>
                 <div className="font-display text-3xl md:text-4xl font-black neon-text">
                   {formatBRL(mrr_total)}
                 </div>
-                <div className="text-xs text-purple-400 mt-1">por mês, nível atual</div>
+                <div className="text-xs text-purple-400 mt-1">{s.mrrSub}</div>
               </div>
 
               <hr className="section-divider" />
@@ -242,19 +239,19 @@ export default function MotorEscala() {
               >
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-lg">🛢️</span>
-                  <span className="text-sm font-bold text-blue-300">Volume do Pré-Sal Digital</span>
+                  <span className="text-sm font-bold text-blue-300">{s.presalTitle}</span>
                 </div>
                 <div className="font-display text-xl font-bold text-blue-200">
                   {formatBytes(presalVolume)}
                 </div>
                 <div className="text-xs text-blue-400 mt-1">
-                  {totalConsultas.toLocaleString("pt-BR")} consultas × 2KB RLHF proprietários
+                  {totalConsultas.toLocaleString()} {s.presalNote}
                 </div>
                 <div
                   className="mt-2 text-xs font-semibold px-2 py-1 rounded inline-block"
                   style={{ background: "rgba(0,200,100,0.15)", color: "#00cc66", border: "1px solid rgba(0,200,100,0.3)" }}
                 >
-                  ✅ Dados 100% protegidos contra treinamento externo
+                  {s.presalProtected}
                 </div>
               </div>
             </div>

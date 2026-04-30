@@ -1,4 +1,9 @@
+import { useLanguage } from "@/contexts/LanguageContext";
+
 export default function Footer() {
+  const { t } = useLanguage();
+  const f = t.footer;
+
   return (
     <footer
       className="relative py-12 px-4 text-center"
@@ -18,13 +23,12 @@ export default function Footer() {
             <div className="font-display font-black text-xl tracking-wider text-white">
               Oráculo de Soph<span className="ia-highlight">IA</span>
             </div>
-            <div className="text-xs text-purple-400 mt-1">Conectando Saberes, Construindo Soluções</div>
+            <div className="text-xs text-purple-400 mt-1">{f.tagline}</div>
           </div>
         </div>
 
         <p className="text-sm text-purple-300 max-w-lg mx-auto">
-          O primeiro unicórnio de soberania de dados do Brasil.
-          Human-in-the-Loop como infraestrutura de Estado.
+          {f.description}
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 text-xs text-purple-400">
@@ -57,8 +61,7 @@ export default function Footer() {
         </div>
 
         <div className="text-xs text-purple-700 pt-4 border-t border-purple-900">
-          © 2025 Oráculo de SophIA. Todos os direitos reservados.
-          Marca protocolada INPI. LGPD Compliant.
+          {f.copyright}
         </div>
       </div>
     </footer>
