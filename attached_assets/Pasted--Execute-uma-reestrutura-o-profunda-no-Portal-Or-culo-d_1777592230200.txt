@@ -1,0 +1,57 @@
+"Execute uma reestruturação profunda no Portal Oráculo de SophIA. Este é um ajuste crítico para alinhar a interface à minha autoridade como Founder e à precisão financeira necessária para investidores. Siga rigorosamente as instruções abaixo:
+
+
+1. SEÇÃO: GABINETE DO CENTAURO (IDENTIDADE SOBERANA)
+
+    Identidade Nominal e Título: Altere o nome para Thales Rodrigues Andrade Pires. Substitua o cargo para: 'Founder & CEO | Autor do livro Oráculo de Sophia | Advogado Sênior | Arquiteto de IA & Governança “Human-in-the-Loop”'.
+
+    Links Sociais: Todos os botões e ícones do LinkedIn devem apontar exclusivamente para: [https://www.linkedin.com/in/thalexrapia](https://www.linkedin.com/in/thalexrapia).
+
+    Identidade Visual: Substitua o ícone da balança pelo arquivo anexo (centauro.png). Aplique um recorte circular, borda neon e mantenha o estilo Glassmorphism.
+
+    Implementação de Bio com Scroll (UI): O contêiner de texto da Bio deve ter uma max-height fixa e ativação de overflow-y: auto com uma barra de rolagem vertical personalizada e discreta.
+
+    Texto Consolidado da Bio:
+
+        'A barreira técnica caiu. Eu provei que o que a máquina mais precisa hoje não é apenas código, mas Propósito, Ética e Sabedoria Humana.
+
+        Com 25 anos de carreira sólida no Direito (OAB/SP) e uma mente forjada por décadas de estudos em filosofia e antropologia, decidi não ser apenas um espectador da revolução da IA. Aos 50 anos, rompi a barreira técnica para fundar o Oráculo de Sophia e publicar o livro global homônimo.
+
+        A TESE: Minha missão é implementar a governança Human-in-the-Loop. No ecossistema que criei, o ser humano é o "Guardião". O Oráculo de SophIA é o "Freio ABS" indispensável para a governança de dados no Brasil.
+
+        DIFERENCIAL:
+
+            Inovação de Elite: Galactic Problem Solver no 2025 NASA Space Apps Challenge (Projeto Akashic Gaia - Finalista Global).
+
+            Resiliência Técnica: Certificações Cisco CCNA, CyberOps Associate e especialista em Cybersecurity Forense Digital (Hackers do Bem).
+
+            Narrativa e Empatia: Como ator premiado e autor, utilizo o storytelling para desenhar IAs que respeitam a evolução humana.'
+
+2. SEÇÃO: SELOS DE RESILIÊNCIA (CARDS E ÍCONES)
+
+    Cards de Destaque: Garanta três cards principais com ícones técnicos:
+
+        Cibersegurança Cisco (CCNA/CyberOps).
+
+        Cybersecurity Forense Digital (Hackers do Bem).
+
+        NASA Space Apps (Akashic Gaia).
+
+    Ícones de Rodapé: No rodapé desta seção, exiba os ícones: '25 Anos Direito', 'IA/ML Grad.', 'Autor Global' e 'Web Summit Rio Alpha'.
+
+3. SEÇÃO: SIMULADOR DE RECEITA (ENGENHARIA FINANCEIRA)
+
+    Ajuste de Origem: Altere o valor mínimo de TODOS os sliders (A, B e C) para 0 (zero) para permitir a visualização da escala desde o ponto inicial.
+
+    Novos Indicadores de Eficiência:
+
+        Slider E — CAC (Custo de Aquisição): Range de R$ 0 a R$ 100.
+
+        Slider F — Churn Rate (Cancelamento): Range de 0% a 20%.
+
+    Refatoração do Cálculo de MRR: O 'MRR Total Projetado' deve refletir o lucro operacional bruto seguindo a fórmula:
+    Lucro Bruto=(Receita SaaS+Receita B2C+Receita B2B)−(Novos Assinantes×CAC)
+
+        Aplique visualmente o impacto do Churn Rate sobre a base de assinantes do Slider A para demonstrar a retenção real de receita.
+
+    Estética: Mantenha a interface neon e atualize as descrições dos sliders para que o investidor compreenda a relação entre eficiência (CAC/Churn) e lucratividade."
