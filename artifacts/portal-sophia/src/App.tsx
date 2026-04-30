@@ -5,6 +5,7 @@ import MotorEscala from "@/components/MotorEscala";
 import CanteiroObras from "@/components/CanteiroObras";
 import TheAsk from "@/components/TheAsk";
 import VerifiedBadge from "@/components/VerifiedBadge";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
@@ -84,6 +85,8 @@ export default function App() {
         <TheAsk />
         <Divider />
         <VerifiedBadge />
+        <Divider />
+        <ContactForm />
       </main>
       <Footer />
       <FloatingWhatsApp />

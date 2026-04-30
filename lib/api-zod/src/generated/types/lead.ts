@@ -5,17 +5,6 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-export interface HealthStatus {
-  status: string;
-}
-
-export interface LeadInput {
-  name: string;
-  email: string;
-  company: string;
-  investmentInterest: string;
-  message: string;
-}
 
 export interface Lead {
   id: number;
@@ -25,8 +14,4 @@ export interface Lead {
   investmentInterest: string;
   message: string;
   createdAt: string;
-}
-
-export interface ErrorResponse {
-  error: string;
 }

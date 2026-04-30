@@ -14,3 +14,15 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * Stores an investor lead from the contact form
+ * @summary Submit investor contact form
+ */
+export const CreateLeadBody = zod.object({
+  name: zod.string(),
+  email: zod.string(),
+  company: zod.string(),
+  investmentInterest: zod.string(),
+  message: zod.string(),
+});
