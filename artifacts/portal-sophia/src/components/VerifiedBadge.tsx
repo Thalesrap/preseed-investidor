@@ -95,7 +95,7 @@ export default function VerifiedBadge() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/thalespires"
+              href="https://www.linkedin.com/in/thalexrapia/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 px-6 py-3 rounded-lg font-bold text-sm transition-all duration-300"
@@ -104,7 +104,7 @@ export default function VerifiedBadge() {
                 border: "1px solid rgba(0, 120, 200, 0.6)",
                 color: "#66aaff",
               }}
-              onClick={() => trackCta("conversao", "LinkedIn", "https://www.linkedin.com/in/thalespires")}
+              onClick={() => trackCta("conversao", "LinkedIn", "https://www.linkedin.com/in/thalexrapia/")}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.background = "rgba(0, 100, 180, 0.5)";
               }}
