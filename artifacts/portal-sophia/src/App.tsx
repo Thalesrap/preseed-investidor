@@ -86,6 +86,16 @@ function NavBar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="/oraculo"
+            className="hidden sm:flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors"
+            style={{ color: "rgba(102,0,102,0.7)" }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#660066")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(102,0,102,0.7)")}
+            title="Painel Administrativo"
+          >
+            🔮
+          </a>
           <LanguageToggle />
           <a
             href="https://wa.me/5516999999179"

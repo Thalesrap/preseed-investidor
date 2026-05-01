@@ -2,8 +2,10 @@ import { Router, type IRouter } from "express";
 import * as zod from "zod";
 import { db } from "@workspace/db";
 import { leadsTable } from "@workspace/db";
+import { desc } from "drizzle-orm";
 
 const router: IRouter = Router();
+const ADMIN_KEY = "Formulario@890iop";
 
 const LeadBodyStrict = zod.object({
   name: zod.string().min(1, "Name is required").max(200),
@@ -11,6 +13,23 @@ const LeadBodyStrict = zod.object({
   company: zod.string().min(1, "Company is required").max(200),
   investmentInterest: zod.string().min(1, "Investment interest is required").max(200),
   message: zod.string().min(1, "Message is required").max(5000),
+});
+
+router.get("/leads", async (req, res) => {
+  if (req.headers["x-admin-key"] !== ADMIN_KEY) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
+  try {
+    const leads = await db
+      .select()
+      .from(leadsTable)
+      .orderBy(desc(leadsTable.createdAt));
+    res.json(leads);
+  } catch (err) {
+    req.log.error(err, "Failed to fetch leads");
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 router.post("/leads", async (req, res) => {
