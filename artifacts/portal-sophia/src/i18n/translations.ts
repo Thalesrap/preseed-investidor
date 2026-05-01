@@ -38,6 +38,8 @@ const pt = {
     certForensicSub: "Hackers do Bem · CISA/SENAI",
     certNasa: "NASA Space Apps Challenge",
     certNasaSub: "Galactic Problem Solver · Akashic Gaia",
+    certGrad: "Graduação em Inteligência Artificial",
+    certGradSub: "Universidade de Franca · IA & ML",
     achievements: [
       { icon: "🏛️", label: "25 Anos Direito" },
       { icon: "🤖", label: "IA / ML Grad." },
@@ -292,6 +294,8 @@ const en: Translations = {
     certForensicSub: "Hackers do Bem · CISA/SENAI",
     certNasa: "NASA Space Apps Challenge",
     certNasaSub: "Galactic Problem Solver · Akashic Gaia",
+    certGrad: "Degree in Artificial Intelligence",
+    certGradSub: "Universidade de Franca · AI & ML",
     achievements: [
       { icon: "🏛️", label: "25 Yrs in Law" },
       { icon: "🤖", label: "AI / ML Grad." },

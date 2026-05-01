@@ -148,46 +148,60 @@ export default function GabineteCentauro() {
               <div className="text-xs uppercase tracking-widest text-purple-400 font-semibold">
                 {f.badgesLabel}
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <div
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg flex-1"
+                  className="flex items-start gap-3 p-3 rounded-lg"
                   style={{
                     background: "rgba(0, 50, 120, 0.3)",
                     border: "1px solid rgba(0, 100, 200, 0.5)",
                   }}
                 >
-                  <div className="text-2xl">🛡️</div>
-                  <div>
-                    <div className="font-bold text-blue-300 text-sm">{f.certCisco}</div>
-                    <div className="text-xs text-blue-400 opacity-80">{f.certCiscoSub}</div>
+                  <div className="text-xl flex-shrink-0 mt-0.5">🛡️</div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-blue-300 text-xs leading-tight">{f.certCisco}</div>
+                    <div className="text-xs text-blue-400 opacity-80 mt-0.5">{f.certCiscoSub}</div>
                   </div>
                 </div>
 
                 <div
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg flex-1"
+                  className="flex items-start gap-3 p-3 rounded-lg"
                   style={{
                     background: "rgba(0, 80, 40, 0.3)",
                     border: "1px solid rgba(0, 160, 80, 0.5)",
                   }}
                 >
-                  <div className="text-2xl">🔍</div>
-                  <div>
-                    <div className="font-bold text-green-300 text-sm">{f.certForensic}</div>
-                    <div className="text-xs text-green-400 opacity-80">{f.certForensicSub}</div>
+                  <div className="text-xl flex-shrink-0 mt-0.5">🔍</div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-green-300 text-xs leading-tight">{f.certForensic}</div>
+                    <div className="text-xs text-green-400 opacity-80 mt-0.5">{f.certForensicSub}</div>
                   </div>
                 </div>
 
                 <div
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg flex-1"
+                  className="flex items-start gap-3 p-3 rounded-lg"
                   style={{
                     background: "rgba(80, 20, 0, 0.3)",
                     border: "1px solid rgba(200, 120, 0, 0.5)",
                   }}
                 >
-                  <div className="text-2xl">🚀</div>
-                  <div>
-                    <div className="font-bold text-orange-300 text-sm">{f.certNasa}</div>
-                    <div className="text-xs text-orange-400 opacity-80">{f.certNasaSub}</div>
+                  <div className="text-xl flex-shrink-0 mt-0.5">🚀</div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-orange-300 text-xs leading-tight">{f.certNasa}</div>
+                    <div className="text-xs text-orange-400 opacity-80 mt-0.5">{f.certNasaSub}</div>
+                  </div>
+                </div>
+
+                <div
+                  className="flex items-start gap-3 p-3 rounded-lg"
+                  style={{
+                    background: "rgba(60, 0, 100, 0.35)",
+                    border: "1px solid rgba(160, 0, 220, 0.5)",
+                  }}
+                >
+                  <div className="text-xl flex-shrink-0 mt-0.5">🎓</div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-violet-300 text-xs leading-tight">{f.certGrad}</div>
+                    <div className="text-xs text-violet-400 opacity-80 mt-0.5">{f.certGradSub}</div>
                   </div>
                 </div>
               </div>
