@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const ADMIN_PWD = "Formulario@890iop";
-const BASE = import.meta.env.BASE_URL?.replace(/\/$/, "") ?? "";
+const BASE = ((import.meta.env.VITE_API_URL as string | undefined) ?? "").replace(/\/$/, "");
 const STORAGE_KEY = "sophia-oracle-auth";
 
 interface Lead {

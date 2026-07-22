@@ -1,0 +1,13 @@
+[build]
+  command = "pnpm install && pnpm --filter @workspace/portal-sophia run build"
+  publish = "artifacts/portal-sophia/dist/public"
+
+[build.environment]
+  BASE_PATH = "/"
+  PORT = "3000"
+  NODE_VERSION = "24"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

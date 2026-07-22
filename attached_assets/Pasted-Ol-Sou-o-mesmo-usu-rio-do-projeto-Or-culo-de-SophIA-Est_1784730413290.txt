@@ -1,0 +1,32 @@
+Olá! Sou o mesmo usuário do projeto "Oráculo de SophIA". Estou momentaneamente sem condições de manter o plano pago do Replit (situação financeira temporária enquanto busco investimento pré-seed), por isso estou migrando meus projetos para hospedagens gratuitas.
+
+O projeto principal (app Flask/Python) já foi migrado com sucesso para o Railway (gratuito). Agora preciso migrar este projeto (o site do investidor pré-seed em investidor.oraculodesophia.com.br) para o Netlify (gratuito para sites estáticos).
+
+Por favor, siga estes passos na ordem:
+
+PASSO 1 — Verificar se o projeto está no GitHub:
+
+    Verifique se existe um repositório GitHub para este projeto (usuário: Thalesrap)
+    Se não existir, crie um novo repositório chamado preseed-investidor e faça o push de todos os arquivos do projeto (usando a GitHub API com o token GITHUB_TOKEN do ambiente, da mesma forma que foi feito no projeto principal)
+    Se já existir, sincronize todos os arquivos para garantir que o repositório está atualizado
+
+PASSO 2 — Preparar para Netlify:
+
+    Identifique o framework (provavelmente React/Vite)
+    Verifique o package.json para confirmar o comando de build e o diretório de saída (geralmente dist para Vite)
+    Crie ou verifique o arquivo netlify.toml com a configuração correta de build
+
+PASSO 3 — Me guiar pelo deploy no Netlify:
+
+    Me instrua passo a passo para criar conta no Netlify (netlify.com), conectar ao repositório GitHub e fazer o deploy
+    Me mostre como configurar o domínio customizado investidor.oraculodesophia.com.br no Netlify
+    Me diga exatamente quais registros DNS preciso adicionar/alterar no Registro.br para apontar o domínio para o Netlify
+
+Informações importantes:
+
+    O domínio investidor.oraculodesophia.com.br está registrado no Registro.br
+    Atualmente o DNS deste subdomínio aponta para um IP do Google/Replit: 34.111.179.208 (registro A)
+    O domínio raiz é oraculodesophia.com.br e já está em uso no Railway — não mexa nele
+    O token GitHub está disponível na variável de ambiente GITHUB_TOKEN
+
+Pode começar verificando a estrutura do projeto e o status do GitHub!

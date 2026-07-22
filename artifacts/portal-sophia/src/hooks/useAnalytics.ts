@@ -10,7 +10,7 @@ function getOrCreateSessionId(): string {
   return sid;
 }
 
-const BASE_URL = import.meta.env.BASE_URL ?? "/";
+const API_ORIGIN = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
 
 async function sendEvent(
   eventType: "section_view" | "slider_change" | "cta_click",
@@ -18,7 +18,7 @@ async function sendEvent(
   metadata?: Record<string, unknown>
 ) {
   try {
-    await fetch(`${BASE_URL}api/analytics/events`, {
+    await fetch(`${API_ORIGIN}/api/analytics/events`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
