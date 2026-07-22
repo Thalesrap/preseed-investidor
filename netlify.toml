@@ -1,11 +1,9 @@
 [build]
-  command = "pnpm install && pnpm --filter @workspace/portal-sophia run build"
+  command = "pnpm install --no-frozen-lockfile && pnpm --filter @workspace/portal-sophia run build"
   publish = "artifacts/portal-sophia/dist/public"
 
 [build.environment]
-  BASE_PATH = "/"
-  PORT = "3000"
-  NODE_VERSION = "24"
+  NODE_VERSION = "22"
 
 [[redirects]]
   from = "/*"
